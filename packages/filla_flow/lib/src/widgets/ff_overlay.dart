@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../utils/ff_shared_utils.dart';
+import '../types/ff_types.dart';
 
 class FFOverlay extends StatelessWidget {
   final String title;
@@ -33,72 +35,6 @@ class FFOverlay extends StatelessWidget {
     this.fill = OverlayFill.gradient,
     this.onTap,
   });
-
-  TextStyle _getHeadingStyle(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    switch (heading) {
-      case 1:
-        return textTheme.headlineSmall?.copyWith(color: Colors.white) ??
-            const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            );
-      case 2:
-        return textTheme.titleLarge?.copyWith(color: Colors.white) ??
-            const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            );
-      case 3:
-        return textTheme.titleMedium?.copyWith(color: Colors.white) ??
-            const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            );
-      case 4:
-        return textTheme.titleSmall?.copyWith(color: Colors.white) ??
-            const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            );
-      case 5:
-        return textTheme.bodyLarge?.copyWith(color: Colors.white) ??
-            const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
-            );
-      case 6:
-        return textTheme.bodyMedium?.copyWith(color: Colors.white) ??
-            const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
-            );
-      default:
-        return textTheme.titleMedium?.copyWith(color: Colors.white) ??
-            const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            );
-    }
-  }
-
-  double _getAspectRatio() {
-    switch (aspectRatio) {
-      case OverlayAspectRatio.square:
-        return 1.0;
-      case OverlayAspectRatio.video:
-        return 16 / 9;
-      case OverlayAspectRatio.monitor:
-        return 4 / 3;
-    }
-  }
 
   Alignment _getAlignment() {
     switch (position) {
@@ -144,7 +80,7 @@ class FFOverlay extends StatelessWidget {
     switch (fill) {
       case OverlayFill.full:
         return LinearGradient(
-          colors: [const Color(0x99000000), const Color(0x99000000)],
+          colors: [const Color(0xCC000000), const Color(0xCC000000)],
         );
       case OverlayFill.gradient:
         switch (position) {
@@ -152,8 +88,8 @@ class FFOverlay extends StatelessWidget {
             return LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [const Color(0x80000000), Colors.transparent],
-              stops: const [0.0, 0.7],
+              colors: [const Color(0xCC000000), Colors.transparent],
+              stops: const [0.0, 0.6],
             );
           case OverlayPosition.center:
             return LinearGradient(
@@ -161,7 +97,7 @@ class FFOverlay extends StatelessWidget {
               end: Alignment.bottomCenter,
               colors: [
                 Colors.transparent,
-                const Color(0x99000000),
+                const Color(0xCC000000),
                 Colors.transparent,
               ],
               stops: const [0.0, 0.5, 1.0],
@@ -170,8 +106,8 @@ class FFOverlay extends StatelessWidget {
             return LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Colors.transparent, const Color(0x80000000)],
-              stops: const [0.3, 1.0],
+              colors: [Colors.transparent, const Color(0xCC000000)],
+              stops: const [0.4, 1.0],
             );
         }
       case OverlayFill.none:
@@ -183,153 +119,68 @@ class FFOverlay extends StatelessWidget {
     final boxDecoration = _getBoxDecoration(context);
 
     return Container(
-      constraints: const BoxConstraints(maxWidth: 672),
+      constraints: const BoxConstraints(maxWidth: 600),
       padding: const EdgeInsets.all(24),
-      margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(20),
       decoration: boxDecoration,
       child: child,
     );
   }
 
   BoxDecoration? _getBoxDecoration(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     switch (box) {
       case OverlayBox.background:
         return BoxDecoration(
-          color: const Color.fromRGBO(255, 255, 255, 0.6),
-          border: Border(
-            left: BorderSide(
-              color: Theme.of(context).colorScheme.primary,
-              width: 4,
-            ),
-          ),
+          color: colorScheme.surface.withValues(alpha: 0.9),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: colorScheme.outline.withValues(alpha: 0.2)),
         );
       case OverlayBox.border:
         return BoxDecoration(
           border: Border.all(
-            color: Theme.of(context).colorScheme.outline,
-            width: 2,
+            color: colorScheme.onSurface.withValues(alpha: 0.8),
+            width: 1.5,
           ),
+          borderRadius: BorderRadius.circular(12),
         );
       case OverlayBox.transparent:
         return null;
     }
   }
 
-  Widget? _buildTag(BuildContext context) {
-    if (tagName == null || tagName!.isEmpty) return null;
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
-        border: Border.all(color: Theme.of(context).colorScheme.primary),
-      ),
-      child: Text(
-        tagName!.toUpperCase(),
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 1,
-          color: Theme.of(context).colorScheme.onSurfaceVariant,
-        ),
-      ),
-    );
-  }
-
-  Widget? _buildMetaSection(BuildContext context) {
-    final hasAuthor = authorName != null && authorName!.isNotEmpty;
-    final hasPublishedAt = publishedAt != null && publishedAt!.isNotEmpty;
-    final hasReadingTime = readingTime != null && readingTime!.isNotEmpty;
-
-    if (!hasAuthor && !hasPublishedAt && !hasReadingTime) {
-      return null;
-    }
-
-    final children = <Widget>[];
-
-    if (hasAuthor) {
-      children.add(
-        Text(
-          authorName!,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: const Color.fromRGBO(255, 255, 255, 0.8),
-          ),
-        ),
-      );
-    }
-
-    if (hasPublishedAt) {
-      if (hasAuthor) {
-        children.add(
-          Text(
-            ' | ',
-            style: TextStyle(
-              fontSize: 14,
-              color: const Color.fromRGBO(255, 255, 255, 0.6),
-            ),
-          ),
-        );
-      }
-      children.add(
-        Text(
-          publishedAt!,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: const Color.fromRGBO(255, 255, 255, 0.8),
-          ),
-        ),
-      );
-    }
-
-    if (hasReadingTime) {
-      if (hasAuthor || hasPublishedAt) {
-        children.add(
-          Text(
-            ' | ',
-            style: TextStyle(
-              fontSize: 14,
-              color: const Color.fromRGBO(255, 255, 255, 0.6),
-            ),
-          ),
-        );
-      }
-      children.add(
-        Text(
-          readingTime!,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: const Color.fromRGBO(255, 255, 255, 0.8),
-          ),
-        ),
-      );
-    }
-
-    return Wrap(spacing: 8, runSpacing: 8, children: children);
-  }
-
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: _getAspectRatio(),
+      aspectRatio: FFSharedUtils.getAspectRatio(aspectRatio),
       child: Stack(
         children: [
+          // Imagen de fondo
           if (featureImage != null && featureImage!.isNotEmpty)
+            FFSharedUtils.buildNetworkImage(
+              featureImage,
+              aspectRatio: FFSharedUtils.getAspectRatio(aspectRatio),
+            )
+          else
             Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(featureImage!),
-                  fit: BoxFit.cover,
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Theme.of(context).colorScheme.primaryContainer,
+                    Theme.of(context).colorScheme.secondaryContainer,
+                  ],
                 ),
               ),
             ),
 
+          // Efecto de overlay
           if (_buildOverlayEffect() != null)
             Positioned.fill(child: _buildOverlayEffect()!),
 
+          // Contenido
           Positioned.fill(
             child: Align(
               alignment: _getAlignment(),
@@ -339,21 +190,51 @@ class FFOverlay extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: _getCrossAxisAlignment(),
                   children: [
-                    if (_buildTag(context) != null) ...[
-                      _buildTag(context)!,
-                      const SizedBox(height: 12),
+                    if (FFSharedUtils.buildMetaSection(
+                          context: context,
+                          publishedAt: publishedAt,
+                          readingTime: readingTime,
+                          tagName: tagName,
+                          isOverlay: true,
+                        ) !=
+                        null) ...[
+                      FFSharedUtils.buildMetaSection(
+                        context: context,
+                        publishedAt: publishedAt,
+                        readingTime: readingTime,
+                        tagName: tagName,
+                        isOverlay: true,
+                      )!,
+                      const SizedBox(height: 16),
                     ],
-                    GestureDetector(
-                      onTap: url != null ? onTap : null,
-                      child: Text(
-                        title,
-                        style: _getHeadingStyle(context),
-                        textAlign: _getTextAlign(),
+                    MouseRegion(
+                      cursor: onTap != null
+                          ? SystemMouseCursors.click
+                          : SystemMouseCursors.basic,
+                      child: GestureDetector(
+                        onTap: onTap,
+                        child: Text(
+                          title,
+                          style: FFSharedUtils.getHeadingStyle(
+                            context,
+                            heading,
+                            color: Colors.white,
+                          ),
+                          textAlign: _getTextAlign(),
+                        ),
                       ),
                     ),
-                    if (_buildMetaSection(context) != null) ...[
+                    if (authorName != null && authorName!.isNotEmpty) ...[
                       const SizedBox(height: 12),
-                      _buildMetaSection(context)!,
+                      Text(
+                        authorName!,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: const Color.fromRGBO(255, 255, 255, 0.9),
+                        ),
+                        textAlign: _getTextAlign(),
+                      ),
                     ],
                   ],
                 ),
@@ -387,13 +268,3 @@ class FFOverlay extends StatelessWidget {
     }
   }
 }
-
-enum OverlayAspectRatio { monitor, square, video }
-
-enum OverlayAlign { start, center, end }
-
-enum OverlayPosition { top, center, bottom }
-
-enum OverlayBox { border, background, transparent }
-
-enum OverlayFill { full, gradient, none }

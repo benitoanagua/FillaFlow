@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:filla_flow/src/widgets/ff_overlay.dart';
+import 'package:filla_flow/filla_flow.dart';
+import 'package:filla_flow/src/types/ff_types.dart';
 
 void main() {
   group('FFOverlay Tests', () {
@@ -80,6 +81,15 @@ void main() {
         const MaterialApp(home: Scaffold(body: videoWidget)),
       );
       expect(find.byType(AspectRatio), findsOneWidget);
+    });
+
+    testWidgets('FFOverlay renders without image', (WidgetTester tester) async {
+      const widget = FFOverlay(title: 'Test Title');
+
+      await tester.pumpWidget(const MaterialApp(home: Scaffold(body: widget)));
+
+      expect(find.text('Test Title'), findsOneWidget);
+      expect(find.byType(Stack), findsOneWidget);
     });
   });
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:filla_flow/src/widgets/ff_card.dart';
+import 'package:filla_flow/filla_flow.dart';
+import 'package:filla_flow/src/types/ff_types.dart';
 
 void main() {
   group('FFCard Tests', () {
@@ -67,6 +68,19 @@ void main() {
 
       await tester.tap(find.byType(InkWell));
       expect(wasTapped, isTrue);
+    });
+
+    testWidgets('FFCard renders without image', (WidgetTester tester) async {
+      const widget = FFCard(
+        title: 'Test Title',
+        excerpt: 'Test excerpt',
+        mediaAlign: CardMediaAlign.top,
+      );
+
+      await tester.pumpWidget(const MaterialApp(home: Scaffold(body: widget)));
+
+      expect(find.text('Test Title'), findsOneWidget);
+      expect(find.text('Test excerpt'), findsOneWidget);
     });
   });
 }
