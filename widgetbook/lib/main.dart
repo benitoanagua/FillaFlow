@@ -14,6 +14,29 @@ class WidgetbookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Widgetbook.material(directories: directories);
+    return Widgetbook.material(
+      directories: directories,
+      addons: [
+        MaterialThemeAddon(
+          themes: [
+            WidgetbookTheme(name: 'Light', data: ThemeData.light()),
+            WidgetbookTheme(name: 'Dark', data: ThemeData.dark()),
+          ],
+        ),
+
+        ViewportAddon([
+          IosViewports.iPhone13,
+          IosViewports.iPad,
+          AndroidViewports.samsungGalaxyS20,
+          WindowsViewports.desktop,
+        ]),
+
+        GridAddon(50),
+
+        AlignmentAddon(),
+
+        ZoomAddon(),
+      ],
+    );
   }
 }

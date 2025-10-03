@@ -133,7 +133,7 @@ class FFOverlay extends StatelessWidget {
     switch (box) {
       case OverlayBox.background:
         return BoxDecoration(
-          color: colorScheme.surface.withValues(alpha: 0.9),
+          color: colorScheme.scrim.withValues(alpha: 0.3),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: colorScheme.outline.withValues(alpha: 0.2)),
         );
