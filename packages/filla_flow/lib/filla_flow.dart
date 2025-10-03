@@ -1,5 +1,7 @@
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
+export 'src/widgets/ff_card.dart';
+
+/// Filla Flow – A Flutter library with custom widgets based on Material Design.
+class FillaFlow {
+  /// Version of the Filla Flow package
+  static const String version = '0.0.1';
 }
