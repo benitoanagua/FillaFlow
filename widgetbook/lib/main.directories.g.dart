@@ -31,11 +31,6 @@ final directories = <_widgetbook.WidgetbookNode>[
             builder:
                 _widgetbook_workspace_ff_card_widgetbook.buildFFCardGridUseCase,
           ),
-          _widgetbook.WidgetbookUseCase(
-            name: 'Vibrant Colors',
-            builder: _widgetbook_workspace_ff_card_widgetbook
-                .buildFFCardVibrantUseCase,
-          ),
         ],
       ),
     ],

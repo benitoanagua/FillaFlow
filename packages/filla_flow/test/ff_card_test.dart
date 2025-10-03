@@ -4,79 +4,63 @@ import 'package:filla_flow/src/widgets/ff_card.dart';
 
 void main() {
   group('FFCard Tests', () {
-    testWidgets('FFCard renders correctly with default values', (
+    testWidgets('FFCard renders correctly with basic content', (
       WidgetTester tester,
     ) async {
       const widget = FFCard(
-        icon: Icon(Icons.star),
-        quantity: '42',
         title: 'Test Title',
-        subtitle: 'Test Subtitle',
-        cardColor: Colors.blue,
+        excerpt: 'Test excerpt content',
+        mediaAlign: CardMediaAlign.top,
       );
 
       await tester.pumpWidget(const MaterialApp(home: Scaffold(body: widget)));
 
       expect(find.byType(Card), findsOneWidget);
-      expect(find.byType(InkWell), findsOneWidget);
-      expect(find.byType(Icon), findsOneWidget);
-      expect(find.text('42'), findsOneWidget);
       expect(find.text('Test Title'), findsOneWidget);
-      expect(find.text('Test Subtitle'), findsOneWidget);
+      expect(find.text('Test excerpt content'), findsOneWidget);
     });
 
-    testWidgets('FFCard uses pastel colors when isPastel is true', (
+    testWidgets('FFCard renders with author section', (
       WidgetTester tester,
     ) async {
       const widget = FFCard(
-        icon: Icon(Icons.star),
-        quantity: '42',
-        title: 'Title',
-        subtitle: 'Subtitle',
-        cardColor: Colors.blue,
-        isPastel: true,
+        title: 'Test Title',
+        authorName: 'John Doe',
+        authorProfileImage: 'https://example.com/avatar.jpg',
+        mediaAlign: CardMediaAlign.top,
       );
 
       await tester.pumpWidget(const MaterialApp(home: Scaffold(body: widget)));
 
-      expect(
-        (tester.firstWidget(find.byType(Card)) as Card).color,
-        equals(Colors.blue.shade50),
-      );
+      expect(find.text('John Doe'), findsOneWidget);
+      expect(find.byType(CircleAvatar), findsOneWidget);
     });
 
-    testWidgets('FFCard uses vibrant colors when isPastel is false', (
+    testWidgets('FFCard renders with meta section', (
       WidgetTester tester,
     ) async {
       const widget = FFCard(
-        icon: Icon(Icons.star),
-        quantity: '42',
-        title: 'Title',
-        subtitle: 'Subtitle',
-        cardColor: Colors.blue,
-        isPastel: false,
+        title: 'Test Title',
+        publishedAt: 'Jan 1, 2024',
+        readingTime: '5 min read',
+        tagName: 'Technology',
+        mediaAlign: CardMediaAlign.top,
       );
 
       await tester.pumpWidget(const MaterialApp(home: Scaffold(body: widget)));
 
-      expect(
-        (tester.firstWidget(find.byType(Card)) as Card).color,
-        equals(Colors.blue.shade500),
-      );
+      expect(find.text('Jan 1, 2024'), findsOneWidget);
+      expect(find.text('5 min read'), findsOneWidget);
+      expect(find.text('Technology'), findsOneWidget);
     });
 
-    testWidgets('FFCard responds to tap when onTap is provided', (
-      WidgetTester tester,
-    ) async {
+    testWidgets('FFCard responds to tap', (WidgetTester tester) async {
       bool wasTapped = false;
 
       final widget = FFCard(
-        icon: const Icon(Icons.star),
-        quantity: '42',
-        title: 'Title',
-        subtitle: 'Subtitle',
-        cardColor: Colors.blue,
+        title: 'Test Title',
         onTap: () => wasTapped = true,
+        mediaAlign: CardMediaAlign.top,
       );
 
       await tester.pumpWidget(MaterialApp(home: Scaffold(body: widget)));

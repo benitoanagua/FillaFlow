@@ -1,4 +1,5 @@
 export 'src/widgets/ff_card.dart';
+export 'src/widgets/ff_grid.dart';
 
 /// Filla Flow – A Flutter library with custom widgets based on Material Design.
 class FillaFlow {
