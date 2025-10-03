@@ -15,6 +15,8 @@ import 'package:widgetbook_workspace/ff_card.widgetbook.dart'
     as _widgetbook_workspace_ff_card_widgetbook;
 import 'package:widgetbook_workspace/ff_grid.widgetbook.dart'
     as _widgetbook_workspace_ff_grid_widgetbook;
+import 'package:widgetbook_workspace/ff_overlay.widgetbook.dart'
+    as _widgetbook_workspace_ff_overlay_widgetbook;
 
 final directories = <_widgetbook.WidgetbookNode>[
   _widgetbook.WidgetbookFolder(
@@ -67,6 +69,41 @@ final directories = <_widgetbook.WidgetbookNode>[
             name: 'Grid with Varied Content',
             builder: _widgetbook_workspace_ff_grid_widgetbook
                 .buildFFCardVariedGridUseCase,
+          ),
+        ],
+      ),
+      _widgetbook.WidgetbookComponent(
+        name: 'FFOverlay',
+        useCases: [
+          _widgetbook.WidgetbookUseCase(
+            name: 'Aspect Ratio Variations',
+            builder: _widgetbook_workspace_ff_overlay_widgetbook
+                .buildFFOverlayAspectRatioVariationsUseCase,
+          ),
+          _widgetbook.WidgetbookUseCase(
+            name: 'Content Variations',
+            builder: _widgetbook_workspace_ff_overlay_widgetbook
+                .buildFFOverlayContentVariationsUseCase,
+          ),
+          _widgetbook.WidgetbookUseCase(
+            name: 'Default',
+            builder: _widgetbook_workspace_ff_overlay_widgetbook
+                .buildFFOverlayUseCase,
+          ),
+          _widgetbook.WidgetbookUseCase(
+            name: 'Heading Levels',
+            builder: _widgetbook_workspace_ff_overlay_widgetbook
+                .buildFFOverlayHeadingLevelsUseCase,
+          ),
+          _widgetbook.WidgetbookUseCase(
+            name: 'Positioning Variations',
+            builder: _widgetbook_workspace_ff_overlay_widgetbook
+                .buildFFOverlayPositioningVariationsUseCase,
+          ),
+          _widgetbook.WidgetbookUseCase(
+            name: 'Style Variations',
+            builder: _widgetbook_workspace_ff_overlay_widgetbook
+                .buildFFOverlayStyleVariationsUseCase,
           ),
         ],
       ),
