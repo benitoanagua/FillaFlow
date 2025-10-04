@@ -30,22 +30,22 @@ Widget buildFFCardUseCase(BuildContext context) {
     ],
   );
 
-  final aspectRatio = context.knobs.object.dropdown<CardMediaRatio>(
+  final aspectRatio = context.knobs.object.dropdown<MediaAspectRatio>(
     label: 'Aspect Ratio',
     labelBuilder: (value) {
       switch (value) {
-        case CardMediaRatio.monitor:
+        case MediaAspectRatio.monitor:
           return 'Monitor (4:3)';
-        case CardMediaRatio.square:
+        case MediaAspectRatio.square:
           return 'Square (1:1)';
-        case CardMediaRatio.video:
+        case MediaAspectRatio.video:
           return 'Video (16:9)';
       }
     },
     options: [
-      CardMediaRatio.monitor,
-      CardMediaRatio.square,
-      CardMediaRatio.video,
+      MediaAspectRatio.monitor,
+      MediaAspectRatio.square,
+      MediaAspectRatio.video,
     ],
   );
 
@@ -229,7 +229,7 @@ Widget _buildAlignmentExample(
         heading: 4,
         mediaAlign: align,
         mediaWidth: width,
-        aspectRatio: CardMediaRatio.monitor,
+        aspectRatio: MediaAspectRatio.monitor,
         autoLayout: true,
         cardColor: Colors.teal,
         onTap: () {
@@ -255,21 +255,21 @@ Widget buildFFCardAspectRatioUseCase(BuildContext context) {
         _buildAspectRatioExample(
           context,
           'Monitor (4:3)',
-          CardMediaRatio.monitor,
+          MediaAspectRatio.monitor,
           faker,
         ),
         const SizedBox(height: 20),
         _buildAspectRatioExample(
           context,
           'Square (1:1)',
-          CardMediaRatio.square,
+          MediaAspectRatio.square,
           faker,
         ),
         const SizedBox(height: 20),
         _buildAspectRatioExample(
           context,
           'Video (16:9)',
-          CardMediaRatio.video,
+          MediaAspectRatio.video,
           faker,
         ),
       ],
@@ -280,13 +280,13 @@ Widget buildFFCardAspectRatioUseCase(BuildContext context) {
 Widget _buildAspectRatioExample(
   BuildContext context,
   String title,
-  CardMediaRatio ratio,
+  MediaAspectRatio ratio,
   Faker faker,
 ) {
   final imageHeights = {
-    CardMediaRatio.square: 400,
-    CardMediaRatio.video: 225,
-    CardMediaRatio.monitor: 300,
+    MediaAspectRatio.square: 400,
+    MediaAspectRatio.video: 225,
+    MediaAspectRatio.monitor: 300,
   };
 
   return Column(

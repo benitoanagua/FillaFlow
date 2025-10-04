@@ -17,7 +17,7 @@ class FFCard extends StatelessWidget {
   final int heading;
   final CardMediaAlign mediaAlign;
   final CardMediaWidth mediaWidth;
-  final CardMediaRatio aspectRatio;
+  final MediaAspectRatio aspectRatio;
   final bool autoLayout;
   final VoidCallback? onTap;
   final Color? cardColor;
@@ -38,7 +38,7 @@ class FFCard extends StatelessWidget {
     this.heading = 4,
     this.mediaAlign = CardMediaAlign.left,
     this.mediaWidth = CardMediaWidth.isHalf,
-    this.aspectRatio = CardMediaRatio.monitor,
+    this.aspectRatio = MediaAspectRatio.monitor,
     this.autoLayout = false,
     this.onTap,
     this.cardColor,

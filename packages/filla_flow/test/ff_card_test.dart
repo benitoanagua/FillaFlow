@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:filla_flow/filla_flow.dart';
-import 'package:filla_flow/src/types/ff_types.dart';
 
 void main() {
   group('FFCard Tests', () {

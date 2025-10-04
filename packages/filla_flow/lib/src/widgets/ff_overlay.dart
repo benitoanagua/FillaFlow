@@ -10,7 +10,7 @@ class FFOverlay extends StatelessWidget {
   final String? authorName;
   final String? publishedAt;
   final String? readingTime;
-  final OverlayAspectRatio aspectRatio;
+  final MediaAspectRatio aspectRatio;
   final int heading;
   final OverlayAlign align;
   final OverlayPosition position;
@@ -27,7 +27,7 @@ class FFOverlay extends StatelessWidget {
     this.authorName,
     this.publishedAt,
     this.readingTime,
-    this.aspectRatio = OverlayAspectRatio.monitor,
+    this.aspectRatio = MediaAspectRatio.monitor,
     this.heading = 3,
     this.align = OverlayAlign.center,
     this.position = OverlayPosition.center,

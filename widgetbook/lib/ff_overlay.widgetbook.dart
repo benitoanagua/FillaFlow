@@ -42,22 +42,22 @@ Widget buildFFOverlayUseCase(BuildContext context) {
     ],
   );
 
-  final aspectRatio = context.knobs.object.dropdown<OverlayAspectRatio>(
+  final aspectRatio = context.knobs.object.dropdown<MediaAspectRatio>(
     label: 'Aspect Ratio',
     labelBuilder: (value) {
       switch (value) {
-        case OverlayAspectRatio.monitor:
+        case MediaAspectRatio.monitor:
           return 'Monitor (4:3)';
-        case OverlayAspectRatio.square:
+        case MediaAspectRatio.square:
           return 'Square (1:1)';
-        case OverlayAspectRatio.video:
+        case MediaAspectRatio.video:
           return 'Video (16:9)';
       }
     },
     options: [
-      OverlayAspectRatio.monitor,
-      OverlayAspectRatio.square,
-      OverlayAspectRatio.video,
+      MediaAspectRatio.monitor,
+      MediaAspectRatio.square,
+      MediaAspectRatio.video,
     ],
   );
 
@@ -222,7 +222,7 @@ Widget _buildContentExample(
           heading: 3,
           align: OverlayAlign.center,
           position: OverlayPosition.center,
-          aspectRatio: OverlayAspectRatio.monitor,
+          aspectRatio: MediaAspectRatio.monitor,
           box: box,
           fill: fill,
           onTap: () {
@@ -305,7 +305,7 @@ Widget _buildStyleExample(
           heading: 3,
           align: OverlayAlign.center,
           position: OverlayPosition.center,
-          aspectRatio: OverlayAspectRatio.monitor,
+          aspectRatio: MediaAspectRatio.monitor,
           box: box,
           fill: fill,
           onTap: () {
@@ -388,7 +388,7 @@ Widget _buildPositioningExample(
           heading: 3,
           align: align,
           position: position,
-          aspectRatio: OverlayAspectRatio.monitor,
+          aspectRatio: MediaAspectRatio.monitor,
           box: OverlayBox.background,
           fill: OverlayFill.gradient,
           onTap: () {
@@ -403,7 +403,7 @@ Widget _buildPositioningExample(
 }
 
 @widgetbook.UseCase(name: 'Aspect Ratio Variations', type: FFOverlay)
-Widget buildFFOverlayAspectRatioVariationsUseCase(BuildContext context) {
+Widget buildFFMediaAspectRatioVariationsUseCase(BuildContext context) {
   final faker = Faker.instance;
 
   return Padding(
@@ -414,7 +414,7 @@ Widget buildFFOverlayAspectRatioVariationsUseCase(BuildContext context) {
           context,
           'Monitor (4:3)',
           faker,
-          OverlayAspectRatio.monitor,
+          MediaAspectRatio.monitor,
           450,
         ),
         const SizedBox(height: 20),
@@ -422,7 +422,7 @@ Widget buildFFOverlayAspectRatioVariationsUseCase(BuildContext context) {
           context,
           'Square (1:1)',
           faker,
-          OverlayAspectRatio.square,
+          MediaAspectRatio.square,
           400,
         ),
         const SizedBox(height: 20),
@@ -430,7 +430,7 @@ Widget buildFFOverlayAspectRatioVariationsUseCase(BuildContext context) {
           context,
           'Video (16:9)',
           faker,
-          OverlayAspectRatio.video,
+          MediaAspectRatio.video,
           400,
         ),
       ],
@@ -442,13 +442,13 @@ Widget _buildAspectRatioExample(
   BuildContext context,
   String title,
   Faker faker,
-  OverlayAspectRatio ratio,
+  MediaAspectRatio ratio,
   double height,
 ) {
   final imageHeights = {
-    OverlayAspectRatio.square: 400,
-    OverlayAspectRatio.video: 225,
-    OverlayAspectRatio.monitor: 300,
+    MediaAspectRatio.square: 400,
+    MediaAspectRatio.video: 225,
+    MediaAspectRatio.monitor: 300,
   };
 
   return Column(
@@ -517,7 +517,7 @@ Widget buildFFOverlayHeadingLevelsUseCase(BuildContext context) {
                   heading: headingLevel,
                   align: OverlayAlign.center,
                   position: OverlayPosition.center,
-                  aspectRatio: OverlayAspectRatio.monitor,
+                  aspectRatio: MediaAspectRatio.monitor,
                   box: OverlayBox.background,
                   fill: OverlayFill.gradient,
                   onTap: () {

@@ -215,8 +215,8 @@ CardMediaAlign _randomMediaAlign(int index) {
   return aligns[index % aligns.length];
 }
 
-CardMediaRatio _randomAspectRatio(int index) {
-  final ratios = CardMediaRatio.values;
+MediaAspectRatio _randomAspectRatio(int index) {
+  final ratios = MediaAspectRatio.values;
   return ratios[index % ratios.length];
 }
 
@@ -258,7 +258,7 @@ Widget buildFFCardVariedGridUseCase(BuildContext context) {
       tagName: randomTag,
       heading: 3 + (index % 3),
       mediaAlign: CardMediaAlign.top,
-      aspectRatio: CardMediaRatio.monitor,
+      aspectRatio: MediaAspectRatio.monitor,
       autoLayout: true,
       cardColor: randomColor,
       onTap: () {},

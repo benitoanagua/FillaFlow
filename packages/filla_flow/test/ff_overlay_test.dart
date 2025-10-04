@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:filla_flow/filla_flow.dart';
-import 'package:filla_flow/src/types/ff_types.dart';
 
 void main() {
   group('FFOverlay Tests', () {
@@ -63,13 +62,13 @@ void main() {
       const squareWidget = FFOverlay(
         title: 'Square',
         featureImage: 'https://picsum.photos/400/400?random=1',
-        aspectRatio: OverlayAspectRatio.square,
+        aspectRatio: MediaAspectRatio.square,
       );
 
       const videoWidget = FFOverlay(
         title: 'Video',
         featureImage: 'https://picsum.photos/400/225?random=1',
-        aspectRatio: OverlayAspectRatio.video,
+        aspectRatio: MediaAspectRatio.video,
       );
 
       await tester.pumpWidget(

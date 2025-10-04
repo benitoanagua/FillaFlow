@@ -66,9 +66,9 @@ class FFSharedUtils {
 
   static double getAspectRatio(dynamic ratioEnum) {
     return switch (ratioEnum) {
-      CardMediaRatio.square || OverlayAspectRatio.square => 1.0,
-      CardMediaRatio.video || OverlayAspectRatio.video => 16 / 9,
-      CardMediaRatio.monitor || OverlayAspectRatio.monitor => 4 / 3,
+      MediaAspectRatio.square => 1.0,
+      MediaAspectRatio.video => 16 / 9,
+      MediaAspectRatio.monitor => 4 / 3,
       _ => 4 / 3,
     };
   }
