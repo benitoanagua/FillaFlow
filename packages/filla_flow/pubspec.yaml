@@ -1,6 +1,6 @@
 name: filla_flow
 description: "Filla Flow – A Flutter library with custom widgets based on Material Design."
-version: 0.0.1
+version: 0.0.4
 homepage: https://github.com/benitoanagua/FillaFlow
 
 environment:
