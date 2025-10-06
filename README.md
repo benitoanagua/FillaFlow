@@ -2,6 +2,12 @@
 
 🚧 **Work in Progress** - Experimental Flutter component library for demonstration purposes only.
 
+## Live Demo
+
+Explore the components in the live WidgetBook showcase:
+
+**[View Live WidgetBook Demo](https://cdn.widgetbook.io/f62307c0-4d3b-4cb4-a856-94c6378e5bc9/93e8e0eb-58b6-47c7-b73e-8b5f1a310873/builds/0a04f099-2179-47b1-bfd4-c00b7f45dad7/index.html)**
+
 ## Quick Start
 
 ```bash
@@ -14,6 +20,8 @@ flutter run -d chrome
 ## Project Overview
 
 This repository contains experimental Flutter components showcased through WidgetBook. The components are currently in development and not production-ready.
+
+**Version:** 0.0.4
 
 ## Available Components
 
@@ -77,12 +85,57 @@ This repository contains experimental Flutter components showcased through Widge
 ```
 FillaFlow/
 ├── packages/filla_flow/     # Component implementations
+│   ├── lib/
+│   │   ├── filla_flow.dart  # Main export file
+│   │   ├── src/
+│   │   │   ├── widgets/     # Component widgets
+│   │   │   ├── types/       # Type definitions
+│   │   │   └── utils/       # Shared utilities
+│   │   └── test/           # Component tests
 └── widgetbook/              # Demo application
     ├── lib/
     │   ├── main.dart        # Entry point
     │   ├── *.widgetbook.dart # Component showcases
     │   └── main.directories.g.dart # Auto-generated
 ```
+
+## Component Features
+
+### FFCard
+
+- Flexible media alignment (left, right, top, bottom)
+- Multiple aspect ratios (monitor, square, video)
+- Responsive layout with auto-layout option
+- Rich metadata support (author, tags, reading time)
+- Customizable heading levels
+
+### FFGrid
+
+- Three layout types (wrap, fixed, auto)
+- Responsive column configuration
+- Custom spacing and aspect ratios
+- Automatic layout detection
+
+### FFOverlay
+
+- Hero-style overlays with gradient effects
+- Multiple positioning options
+- Various content box styles
+- Flexible overlay fills
+
+### FFCarousel
+
+- Responsive item display
+- Auto-play functionality
+- Customizable navigation
+- Multiple gap sizes
+
+### FFSlideshow
+
+- Full-screen slide presentations
+- Auto-play with configurable intervals
+- Multiple navigation styles
+- Custom content support
 
 ## Important Notes
 
@@ -97,4 +150,4 @@ FillaFlow/
 - **Missing components**: Regenerate with build_runner
 - **Hot reload issues**: Restart the application
 
-Start exploring components by running the commands in the widgetbook directory.
+Start exploring components by running the commands in the widgetbook directory or check the [live demo](https://cdn.widgetbook.io/f62307c0-4d3b-4cb4-a856-94c6378e5bc9/93e8e0eb-58b6-47c7-b73e-8b5f1a310873/builds/0a04f099-2179-47b1-bfd4-c00b7f45dad7/index.html).

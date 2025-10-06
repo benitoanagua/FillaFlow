@@ -99,7 +99,7 @@ Widget buildFFCardUseCase(BuildContext context) {
 
   return Center(
     child: SizedBox(
-      width: 400,
+      width: 768,
       child: FFCard(
         title: context.knobs.string(
           label: 'Title',

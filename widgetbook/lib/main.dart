@@ -39,8 +39,8 @@ class WidgetbookApp extends StatelessWidget {
         ),
 
         ViewportAddon([
-          IosViewports.iPhone13,
           IosViewports.iPad,
+          IosViewports.iPhone13,
           AndroidViewports.samsungGalaxyS20,
           WindowsViewports.desktop,
         ]),
